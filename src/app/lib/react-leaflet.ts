@@ -13,3 +13,10 @@ export const TileLayer = dynamic(
     ssr: false,
   },
 )
+
+export const Marker = dynamic(
+  async () => (await import('react-leaflet')).Marker,
+  {
+    ssr: false,
+  },
+)
