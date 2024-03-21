@@ -1,7 +1,8 @@
 'use client'
 
 import { LatLngExpression } from 'leaflet'
-import { FC, ReactNode, useMemo } from 'react'
+import { ReactNode, useMemo } from 'react'
+import { useGetUserCurrentLocation } from '../hooks/use-get-user-current-location'
 import { MapContainer, TileLayer } from '../lib/react-leaflet'
 
 interface MapProps {
@@ -10,11 +11,12 @@ interface MapProps {
   children: ReactNode
 }
 
-export const Map: FC<MapProps> = ({
+export const Map = ({
   children,
   zoom = 10,
   defaultCenterPosition = { lat: -23.550241, lng: -46.634126 },
-}) => {
+}: MapProps) => {
+  const { userLocation } = useGetUserCurrentLocation()
   const time = useMemo(() => new Date().getTime(), [])
 
   const displayMap = useMemo(
@@ -23,7 +25,7 @@ export const Map: FC<MapProps> = ({
         key={time}
         zoom={zoom}
         zoomControl={false}
-        center={defaultCenterPosition}
+        center={userLocation ?? defaultCenterPosition}
         className="w-full h-full z-0"
       >
         <TileLayer
@@ -35,7 +37,7 @@ export const Map: FC<MapProps> = ({
         {children}
       </MapContainer>
     ),
-    [children, defaultCenterPosition, time, zoom],
+    [children, userLocation, defaultCenterPosition, time, zoom],
   )
 
   return displayMap
