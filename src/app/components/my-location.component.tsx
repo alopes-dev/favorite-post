@@ -8,7 +8,7 @@ export const MyLocation = () => {
 
   return (
     <button
-      className="fixed top-24 right-4 z-[1000] bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md text-blue-500"
+      className="fixed top-36 right-4 z-[1000] bg-white rounded-full w-12 h-12 flex items-center justify-center shadow-md text-blue-500"
       onClick={handleCenterToUserCoords}
     >
       <MdGpsFixed size={30} />
