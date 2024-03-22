@@ -29,6 +29,15 @@ body {
   height: var(--doc-height);
 }
 
+.leaflet-div-icon {
+  background: none !important;
+  border: none !important;
+}
+
+.leaflet-marker-icon.highlighted.leaflet-zoom-animated.leaflet-interactive {
+  z-index: 10000000000 !important;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

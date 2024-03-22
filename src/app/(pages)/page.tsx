@@ -1,12 +1,19 @@
-import { GasStations } from '../components/gas-stations'
+import { GasStations } from '../components/gas-stations.component'
 import { Map } from '../components/map.component'
+import { MyLocation } from '../components/my-location.component'
+import { Position } from '../components/position.component'
+import { MapProvider } from '../providers/map.provider'
 
 export default function Home() {
   return (
-    <main className="w-full h-full">
-      <Map>
+    <Map>
+      <MapProvider initOnUserPosition>
+        <MyLocation />
+
+        <Position />
+
         <GasStations />
-      </Map>
-    </main>
+      </MapProvider>
+    </Map>
   )
 }
