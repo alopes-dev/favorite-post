@@ -1,6 +1,6 @@
 export const checkFavoritePost = () => {
-  var textArray = [false, true]
-  var randomNumber = Math.floor(Math.random() * textArray.length)
+  const textArray = [false, true]
+  const randomNumber = Math.floor(Math.random() * textArray.length)
 
   const PostoFavoritoID = randomNumber === 1 ? Math.random().toString() : null
   return {
